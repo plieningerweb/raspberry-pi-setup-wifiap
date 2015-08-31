@@ -84,12 +84,19 @@ rsn_pairwise=CCMP
 ```
 
 
-## Unmount ISO
+## Unmount ISO and Copy on SD-Card
 ```
 sudo umount /media/main/raspi_root
 sudo umount /media/main/raspi_boot
 sudo losetup -d $LODEV
 ```
+
+Copy on SD-Card: Attention!!! Check which is your SD-Card. Otherwise you will DELETE your Drive!!!!
+
+```
+sudo dd bs=4M if=Downloads/2015-05-05-raspbian-wheezy.img  of=/dev/sdb
+```
+
 
 ## Boot Raspberry
 
