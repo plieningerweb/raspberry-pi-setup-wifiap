@@ -103,3 +103,5 @@ sudo dd bs=4M if=Downloads/2015-05-05-raspbian-wheezy.img  of=/dev/sdb
 - Put WiFi USB Dongle in
 - Put SD-Card in
 - Power UP
+- Reboot
+- Connect to WiFi from other Computer
