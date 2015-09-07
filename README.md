@@ -83,6 +83,34 @@ wpa_pairwise=TKIP
 rsn_pairwise=CCMP
 ```
 
+In order to only assign one IP-Address and keep hostapd working, disable dhcpcd.
+(Why? check http://www.elektronik-kompendium.de/sites/raspberry-pi/1912151.htm)
+```
+service dhcpcd stop
+update-rc.d dhcpcd remove
+```
+
+## Extend life of SD-Card:
+
+Most of this ideas is from http://raspberrypi.stackexchange.com/questions/169/how-can-i-extend-the-life-of-my-sd-card
+
+
+```
+#remove swap
+apt-get remove dphys-swapfile
+
+#noatime is already set in /etc/fstab
+
+#write /var/tmp and /var/log to ram
+tmpfs /tmp tmpfs defaults,noatime,nosuid,mode=1777,size=30m 0 0
+tmpfs /var/log tmpfs defaults,noatime,nosuid,mode=0755,size=50m 0 0
+#tmpfs    /var/run    tmpfs    defaults,noatime,nosuid,mode=0755,size=2m    0 0
+
+rm -rf /var/tmp
+ln -s /tmp /var/tmp
+```
+
+
 
 ## Unmount ISO and Copy on SD-Card
 ```
